@@ -13,6 +13,9 @@ COPY src ./src
 
 RUN mkdir -p uploads logs
 
+COPY start.sh ./
+RUN chmod +x ./start.sh
+
 EXPOSE 5000
 
-CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && node src/index.js"]
+CMD ["./start.sh"]
