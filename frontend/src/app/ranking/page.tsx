@@ -108,7 +108,7 @@ export default function RankingPage() {
                     <Image src={photo} alt={c.name} fill style={{objectFit:"cover"}} onError={(e:any)=>{e.target.src="/placeholder.jpg";}} />
                   </div>
                   <div className={`rank-${ranks[i]}`} style={{width:28,height:28,borderRadius:"50%",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.75rem",fontWeight:700,marginBottom:6,position:"relative",zIndex:1}}>{ranks[i]}</div>
-                  <p style={{fontFamily:"var(--font-body)",fontSize:"0.75rem",fontWeight:500,textAlign:"center",padding:"0 8px",truncate:"ellipsis",overflow:"hidden",whiteSpace:"nowrap",maxWidth:"100%",color:"var(--text)",position:"relative",zIndex:1}}>{c.name.split(" ")[0]}</p>
+                  <p style={{fontFamily:"var(--font-body)",fontSize:"0.75rem",fontWeight:500,textAlign:"center",padding:"0 8px",textOverflow:"ellipsis",overflow:"hidden",whiteSpace:"nowrap",maxWidth:"100%",color:"var(--text)",position:"relative",zIndex:1}}>{c.name.split(" ")[0]}</p>
                   <p style={{fontSize:"0.7rem",color:"var(--gold-pale)",position:"relative",zIndex:1}}>{c.totalVotes.toLocaleString("fr-FR")}</p>
                 </div>
               );
