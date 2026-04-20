@@ -4,6 +4,7 @@
   "description": "META MISS & MASTER - Backend API",
   "main": "dist/index.js",
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
     "build": "echo 'No build step for pure Node.js'",
@@ -30,10 +31,10 @@
     "socket.io": "^4.6.1",
     "uuid": "^9.0.0",
     "winston": "^3.11.0",
-    "stripe": "^14.25.0"
+    "stripe": "^14.25.0",
+    "prisma": "^5.10.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3",
-    "prisma": "^5.10.0"
+    "nodemon": "^3.0.3"
   }
 }
