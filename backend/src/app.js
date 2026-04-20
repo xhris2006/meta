@@ -50,6 +50,10 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString(), env: process.env.NODE_ENV });
 });
 
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", timestamp: new Date().toISOString(), env: process.env.NODE_ENV });
+});
+
 // API routes
 app.use("/api/auth", authRoutes);
 app.use("/api/candidates", candidateRoutes);
