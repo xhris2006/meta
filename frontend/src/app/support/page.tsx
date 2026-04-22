@@ -10,7 +10,7 @@ export default function SupportPage() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main style={{ maxWidth: 1050, margin: "0 auto", padding: "100px 16px 72px" }}>
+      <main style={{ maxWidth: 1050, margin: "0 auto", padding: "65px 12px 45px" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <div className="section-tag">Assistance</div>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.4rem,6vw,4rem)", marginBottom: 12 }}>

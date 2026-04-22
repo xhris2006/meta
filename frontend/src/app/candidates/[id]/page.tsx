@@ -35,7 +35,7 @@ export default function CandidateDetailPage() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="pt-24 pb-20 px-4 max-w-5xl mx-auto">
+      <div className="pt-16 pb-16 px-4 max-w-5xl mx-auto">
         <Link href="/candidates" className="flex items-center gap-2 text-gray-400 hover:text-gold-400 mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Retour
         </Link>

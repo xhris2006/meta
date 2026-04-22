@@ -30,7 +30,7 @@ export default function HomePage() {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      padding: "70px 14px 40px",
+      padding: "60px 12px 35px",
       textAlign: "center",
     },
     eyebrow: {

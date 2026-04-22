@@ -17,9 +17,9 @@ const styles: Record<string, CSSProperties> = {
   card: {
     background: "var(--glass)",
     border: "1px solid var(--border)",
-    borderRadius: 24,
-    padding: "48px 40px",
-    maxWidth: 460,
+    borderRadius: 20,
+    padding: "36px 28px",
+    maxWidth: 420,
     width: "100%",
     textAlign: "center",
     backdropFilter: "blur(20px)",

@@ -36,7 +36,7 @@ export default function RankingPage() {
 
   const S:Record<string,React.CSSProperties> = {
     page:{minHeight:"100vh"},
-    wrap:{paddingTop:70,paddingBottom:50,padding:"70px 30px 50px",maxWidth:900,margin:"0 auto",position:"relative",zIndex:1},
+    wrap:{paddingTop:65,paddingBottom:45,padding:"65px 25px 45px",maxWidth:900,margin:"0 auto",position:"relative",zIndex:1},
     header:{textAlign:"center",marginBottom:28},
     title:{fontFamily:"var(--font-display)",fontSize:"clamp(1.8rem,5vw,3.2rem)",fontWeight:300,letterSpacing:"-0.01em",marginBottom:8},
     livePill:{display:"inline-flex",alignItems:"center",gap:6,fontSize:"0.65rem",color:live?"#4CAF50":"var(--text-muted)",letterSpacing:"0.1em"},

@@ -97,7 +97,7 @@ export default function VotePage() {
   const S: Record<string, React.CSSProperties> = {
     page: { minHeight: "100vh" },
     wrap: {
-      padding: "70px 12px 50px",
+      padding: "65px 10px 45px",
       maxWidth: 1080,
       margin: "0 auto",
       position: "relative",
