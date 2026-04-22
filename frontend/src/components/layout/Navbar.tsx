@@ -9,6 +9,7 @@ const publicLinks = [
   ["Candidats", "/candidates"],
   ["Classement", "/ranking"],
   ["Participer", "/candidates/register"],
+  ["Support", "/support"],
 ];
 
 export default function Navbar() {
@@ -145,17 +146,23 @@ export default function Navbar() {
           className="md:hidden"
           aria-label="Ouvrir le menu"
           style={{
-            width: 42,
+            minWidth: 88,
             height: 42,
             borderRadius: 14,
             border: "1px solid rgba(201,147,42,.22)",
             background: "rgba(201,147,42,.08)",
             color: "var(--text)",
-            fontSize: "1.2rem",
+            fontSize: "0.92rem",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+            fontWeight: 600,
           }}
         >
-          ☰
+          <span style={{ fontSize: "1.15rem", lineHeight: 1 }}>☰</span>
+          <span>Menu</span>
         </button>
       </nav>
 

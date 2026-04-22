@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import WhatsAppPopup from "@/components/layout/WhatsAppPopup";
 
 export const metadata: Metadata = {
   title: "META MISS & MASTER — Concours en ligne",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body className="min-h-screen crown-bg">
         {children}
+        <WhatsAppPopup />
         <Toaster
           position="top-right"
           toastOptions={{

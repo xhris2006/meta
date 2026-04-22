@@ -378,8 +378,16 @@ async function processStripeWebhook(rawBody, signature) {
 }
 
 async function creditVotes(payment) {
-  await prisma.$transaction(async (tx) => {
-    await tx.payment.update({ where: { id: payment.id }, data: { status: "COMPLETED" } });
+  const credited = await prisma.$transaction(async (tx) => {
+    const result = await tx.payment.updateMany({
+      where: { id: payment.id, status: "PENDING" },
+      data: { status: "COMPLETED" },
+    });
+
+    if (result.count === 0) {
+      return false;
+    }
+
     await tx.vote.create({
       data: {
         userId: payment.userId,
@@ -390,11 +398,17 @@ async function creditVotes(payment) {
     });
     await tx.candidate.update({
       where: { id: payment.candidateId },
-      data: { totalVotes: { increment: payment.votesCount } },
+        data: { totalVotes: { increment: payment.votesCount } },
     });
+
+    return true;
   });
 
-  await emitRankingUpdate();
+  if (credited) {
+    await emitRankingUpdate();
+  }
+
+  return credited;
 }
 
 async function getUserPayments(userId, page, limit) {

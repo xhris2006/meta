@@ -19,7 +19,7 @@ const styles: Record<string, CSSProperties> = {
     border: "1px solid var(--border)",
     borderRadius: 24,
     padding: "48px 40px",
-    maxWidth: 440,
+    maxWidth: 460,
     width: "100%",
     textAlign: "center",
     backdropFilter: "blur(20px)",
@@ -45,7 +45,7 @@ const styles: Record<string, CSSProperties> = {
     color: "var(--gold-light)",
     marginBottom: 8,
   },
-  btns: { display: "flex", gap: 12 },
+  btns: { display: "flex", gap: 12, flexWrap: "wrap" },
   btn1: {
     flex: 1,
     padding: "13px 0",
@@ -88,9 +88,7 @@ function CallbackFallback() {
       <div style={styles.card}>
         <div style={styles.spinner} />
         <div style={styles.title}>Verification...</div>
-        <div style={styles.sub}>
-          Confirmation du paiement en cours. Veuillez patienter.
-        </div>
+        <div style={styles.sub}>Confirmation du paiement en cours. Veuillez patienter.</div>
       </div>
     </div>
   );
@@ -98,9 +96,7 @@ function CallbackFallback() {
 
 function CallbackContent() {
   const params = useSearchParams();
-  const [status, setStatus] = useState<"loading" | "success" | "failed">(
-    "loading",
-  );
+  const [status, setStatus] = useState<"loading" | "pending" | "success" | "failed">("loading");
   const [votes, setVotes] = useState(0);
   const [message, setMessage] = useState("");
 
@@ -120,10 +116,16 @@ function CallbackContent() {
       return;
     }
 
-    api
-      .get(`/payments/verify/${txRef}`)
-      .then((response) => {
+    let cancelled = false;
+    let attempts = 0;
+    const maxAttempts = 12;
+
+    const checkPayment = async () => {
+      try {
+        const response = await api.get(`/payments/verify/${txRef}`);
         const paymentData = response.data.data;
+
+        if (cancelled) return;
 
         if (paymentData.status === "COMPLETED") {
           setStatus("success");
@@ -132,13 +134,29 @@ function CallbackContent() {
           return;
         }
 
+        attempts += 1;
+        if (attempts < maxAttempts) {
+          setStatus("pending");
+          setMessage(paymentData.message || "Paiement en attente de confirmation");
+          window.setTimeout(checkPayment, 5000);
+          return;
+        }
+
         setStatus("failed");
         setMessage(paymentData.message || "Paiement non confirme");
-      })
-      .catch(() => {
-        setStatus("failed");
-        setMessage("Erreur lors de la verification");
-      });
+      } catch {
+        if (!cancelled) {
+          setStatus("failed");
+          setMessage("Erreur lors de la verification");
+        }
+      }
+    };
+
+    checkPayment();
+
+    return () => {
+      cancelled = true;
+    };
   }, [params]);
 
   return (
@@ -149,8 +167,26 @@ function CallbackContent() {
           <>
             <div style={styles.spinner} />
             <div style={styles.title}>Verification...</div>
+            <div style={styles.sub}>Confirmation du paiement en cours. Veuillez patienter.</div>
+          </>
+        )}
+
+        {status === "pending" && (
+          <>
+            <div style={styles.spinner} />
+            <div style={styles.title}>Paiement en cours</div>
             <div style={styles.sub}>
-              Confirmation du paiement en cours. Veuillez patienter.
+              {message}
+              <br />
+              Nous reessayons automatiquement pendant environ 1 minute.
+            </div>
+            <div style={styles.btns}>
+              <Link href="/ranking" style={styles.btn2}>
+                Voir le classement
+              </Link>
+              <Link href="/support" style={styles.btn1}>
+                Contacter le support
+              </Link>
             </div>
           </>
         )}
@@ -179,12 +215,14 @@ function CallbackContent() {
             <div style={styles.icon}>X</div>
             <div style={styles.title}>Paiement non confirme</div>
             <div style={styles.sub}>{message}</div>
-            <Link
-              href="/candidates"
-              style={{ ...styles.btn2, display: "block", maxWidth: 240, margin: "0 auto" }}
-            >
-              Retour aux candidats
-            </Link>
+            <div style={styles.btns}>
+              <Link href="/support" style={styles.btn1}>
+                Contacter le support
+              </Link>
+              <Link href="/candidates" style={styles.btn2}>
+                Retour aux candidats
+              </Link>
+            </div>
           </>
         )}
       </div>
