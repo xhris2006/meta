@@ -248,22 +248,7 @@ export default function Navbar() {
                     Deconnexion
                   </button>
                 </>
-              ) : (
-                <Link
-                  href="/xhrisadmin"
-                  onClick={closeMenu}
-                  style={{
-                    padding: "14px 16px",
-                    borderRadius: 16,
-                    textDecoration: "none",
-                    textAlign: "center",
-                    color: "var(--text-muted)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  Acces admin
-                </Link>
-              )}
+              ) : null}
             </div>
           </aside>
         </>
