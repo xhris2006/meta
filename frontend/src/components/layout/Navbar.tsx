@@ -291,63 +291,6 @@ export default function Navbar() {
     </>
   );
 }
-            </div>
-
-            <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 8 }}>
-              <Link
-                href="/vote"
-                onClick={closeMenu}
-                style={{
-                  padding: "11px 12px",
-                  borderRadius: 12,
-                  textDecoration: "none",
-                  textAlign: "center",
-                  background: "linear-gradient(135deg,var(--gold),var(--gold-light))",
-                  color: "#08000A",
-                  fontWeight: 700,
-                  fontSize: "0.84rem",
-                }}
-              >
-                Voter maintenant
-              </Link>
-
-              {isAuthenticated && user?.role === "ADMIN" ? (
-                <>
-                  <Link
-                    href="/admin"
-                    onClick={closeMenu}
-                    style={{
-                      padding: "11px 12px",
-                      borderRadius: 12,
-                      textDecoration: "none",
-                      textAlign: "center",
-                      color: "var(--gold-light)",
-                      border: "1px solid rgba(201,147,42,.24)",
-                      fontSize: "0.84rem",
-                    }}
-                  >
-                    Administration
-                  </Link>
-                  <button
-                    onClick={handleLogout}
-                    style={{
-                      padding: "11px 12px",
-                      borderRadius: 12,
-                      border: "1px solid rgba(239,83,80,.24)",
-                      background: "transparent",
-                      color: "#EF5350",
-                      cursor: "pointer",
-                      fontSize: "0.84rem",
-                    }}
-                  >
-                    Deconnexion
-                  </button>
-                </>
-              ) : null}
-            </div>
-          </aside>
-        </>
-      )}
     </>
   );
 }
