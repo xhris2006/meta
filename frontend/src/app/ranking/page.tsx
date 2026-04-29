@@ -67,7 +67,7 @@ export default function RankingPage() {
     votesLabel:{fontSize:"0.6rem",color:"var(--text-muted)"},
     voteBtn:{
       padding:"6px 12px",background:"transparent",
-      border:"1px solid rgba(201,147,42,.3)",color:"var(--gold)",
+      border:"1px solid rgba(255,107,0,.3)",color:"var(--gold)",
       borderRadius:100,fontSize:"0.7rem",cursor:"pointer",
       transition:"all .2s",whiteSpace:"nowrap",fontFamily:"var(--font-body)",
       textDecoration:"none",display:"inline-block",
@@ -127,7 +127,7 @@ export default function RankingPage() {
                    i===1?{borderColor:"rgba(192,192,192,.2)"}:
                    i===2?{borderColor:"rgba(205,127,50,.25)"}:{})
               }}
-                onMouseEnter={e=>{(e.currentTarget as HTMLDivElement).style.borderColor="rgba(201,147,42,.3)";(e.currentTarget as HTMLDivElement).style.transform="translateX(4px)";}}
+                onMouseEnter={e=>{(e.currentTarget as HTMLDivElement).style.borderColor="rgba(255,107,0,.3)";(e.currentTarget as HTMLDivElement).style.transform="translateX(4px)";}}
                 onMouseLeave={e=>{(e.currentTarget as HTMLDivElement).style.borderColor=i===0?"rgba(255,215,0,.3)":i===1?"rgba(192,192,192,.2)":i===2?"rgba(205,127,50,.25)":"var(--border)";(e.currentTarget as HTMLDivElement).style.transform="";}}
               >
                 <div style={{fontFamily:"var(--font-display)",fontSize:"1.3rem",fontWeight:700,textAlign:"center",color:i===0?"#FFD700":i===1?"#C0C0C0":i===2?"#CD7F32":"var(--text-muted)"}}>
@@ -145,8 +145,8 @@ export default function RankingPage() {
                   <div style={S.votesVal}>{c.totalVotes.toLocaleString("fr-FR")}</div>
                 </div>
                 <Link href={`/vote/${c.id}`} style={S.voteBtn}
-                  onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="rgba(201,147,42,.1)";(e.currentTarget as HTMLElement).style.borderColor="var(--gold)";}}
-                  onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="transparent";(e.currentTarget as HTMLElement).style.borderColor="rgba(201,147,42,.3)";}}
+                  onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="rgba(255,107,0,.1)";(e.currentTarget as HTMLElement).style.borderColor="var(--gold)";}}
+                  onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="transparent";(e.currentTarget as HTMLElement).style.borderColor="rgba(255,107,0,.3)";}}
                 >Voter →</Link>
               </div>
             );

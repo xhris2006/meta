@@ -53,16 +53,16 @@ export default function Navbar() {
           left: 0,
           right: 0,
           zIndex: 120,
-          height: "58px",
-          padding: "0 14px",
+          height: "66px",
+          padding: "0 18px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          background: "rgba(10,0,5,0.88)",
-          backdropFilter: "blur(18px)",
-          borderBottom: "1px solid rgba(201,147,42,.16)",
+          background: "rgba(10,10,10,0.95)",
+          backdropFilter: "blur(20px)",
+          borderBottom: "1px solid rgba(255,107,0,0.16)",
+          boxShadow: "0 26px 70px rgba(0,0,0,0.35)",
         }}
-        className="dark:bg-opacity-88"
       >
         <Link
           href="/"
@@ -70,27 +70,27 @@ export default function Navbar() {
             textDecoration: "none",
             color: "var(--gold-light)",
             fontFamily: "var(--font-display)",
-            fontSize: "0.95rem",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
+            fontSize: "1rem",
+            fontWeight: 800,
+            letterSpacing: "0.16em",
             textTransform: "uppercase",
           }}
         >
-          Meta Miss & Master
+          META VOTE
         </Link>
 
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           {mounted && (
             <button
               onClick={toggleTheme}
               aria-label={theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"}
               title={theme === "dark" ? "Mode clair" : "Mode sombre"}
               style={{
-                width: 38,
-                height: 38,
-                borderRadius: 12,
-                border: "1px solid rgba(201,147,42,.24)",
-                background: "rgba(201,147,42,.08)",
+                width: 42,
+                height: 42,
+                borderRadius: 14,
+                border: "1px solid rgba(255,107,0,0.22)",
+                background: "rgba(255,107,0,0.12)",
                 color: "var(--text)",
                 fontSize: "1rem",
                 display: "flex",
@@ -107,15 +107,15 @@ export default function Navbar() {
             onClick={() => setOpen(true)}
             aria-label="Ouvrir le menu"
             style={{
-              minWidth: 88,
-              height: 38,
-              padding: "0 12px",
-              borderRadius: 12,
-              border: "1px solid rgba(201,147,42,.24)",
-              background: "rgba(201,147,42,.08)",
+              minWidth: 96,
+              height: 42,
+              padding: "0 14px",
+              borderRadius: 20,
+              border: "1px solid rgba(255,107,0,0.24)",
+              background: "rgba(255,107,0,0.1)",
               color: "var(--text)",
-              fontSize: "0.85rem",
-              fontWeight: 600,
+              fontSize: "0.9rem",
+              fontWeight: 700,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -123,7 +123,7 @@ export default function Navbar() {
               cursor: "pointer",
             }}
           >
-            <span style={{ fontSize: "0.88rem", lineHeight: 1, letterSpacing: "-0.12em" }}>|||</span>
+            <span style={{ fontSize: "0.92rem", lineHeight: 1, letterSpacing: "-0.12em" }}>☰</span>
             <span>Menu</span>
           </button>
         </div>
@@ -138,7 +138,7 @@ export default function Navbar() {
               position: "fixed",
               inset: 0,
               border: "none",
-              background: "rgba(0,0,0,.56)",
+              background: "rgba(0,0,0,0.68)",
               zIndex: 121,
               cursor: "pointer",
             }}
@@ -149,16 +149,16 @@ export default function Navbar() {
               position: "fixed",
               top: 0,
               right: 0,
-              width: "min(280px, 88vw)",
+              width: "min(320px, 92vw)",
               height: "100vh",
               zIndex: 122,
-              padding: "14px 12px 18px",
+              padding: "24px 20px 24px",
               display: "flex",
               flexDirection: "column",
-              gap: 10,
-              background: "linear-gradient(180deg, rgba(18,4,10,.98), rgba(7,0,3,.98))",
-              borderLeft: "1px solid rgba(201,147,42,.18)",
-              boxShadow: "-18px 0 50px rgba(0,0,0,.38)",
+              gap: 16,
+              background: "radial-gradient(circle at top right, rgba(255,107,0,0.18), transparent 26%), #070707",
+              borderLeft: "1px solid rgba(255,107,0,0.18)",
+              boxShadow: "-22px 0 70px rgba(0,0,0,0.45)",
             }}
           >
             <div
@@ -187,7 +187,7 @@ export default function Navbar() {
                   width: 38,
                   height: 38,
                   borderRadius: 12,
-                  border: "1px solid rgba(201,147,42,.16)",
+                  border: "1px solid rgba(255,107,0,.16)",
                   background: "transparent",
                   color: "var(--text)",
                   fontSize: "1rem",
@@ -202,8 +202,8 @@ export default function Navbar() {
               style={{
                 padding: "10px 12px",
                 borderRadius: 14,
-                background: "rgba(201,147,42,.06)",
-                border: "1px solid rgba(201,147,42,.12)",
+                background: "rgba(255,107,0,.06)",
+                border: "1px solid rgba(255,107,0,.12)",
                 color: "var(--text-muted)",
                 fontSize: "0.76rem",
                 lineHeight: 1.55,
@@ -212,20 +212,21 @@ export default function Navbar() {
               Utilisez ce menu pour aller vers chaque page du concours.
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {links.map(([label, href]) => (
                 <Link
                   key={href}
                   href={href}
                   onClick={closeMenu}
                   style={{
-                    padding: "10px 12px",
-                    borderRadius: 12,
+                    padding: "14px 16px",
+                    borderRadius: 18,
                     color: "var(--text)",
                     textDecoration: "none",
-                    background: "rgba(255,255,255,.03)",
-                    border: "1px solid var(--border)",
-                    fontSize: "0.84rem",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,107,0,0.16)",
+                    fontSize: "0.92rem",
+                    fontWeight: 600,
                   }}
                 >
                   {label}
@@ -262,7 +263,7 @@ export default function Navbar() {
                       textDecoration: "none",
                       textAlign: "center",
                       color: "var(--gold-light)",
-                      border: "1px solid rgba(201,147,42,.24)",
+                      border: "1px solid rgba(255,107,0,.24)",
                       fontSize: "0.84rem",
                     }}
                   >

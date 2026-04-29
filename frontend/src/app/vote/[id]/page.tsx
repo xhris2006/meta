@@ -128,7 +128,7 @@ export default function VotePage() {
       position: "absolute",
       inset: 0,
       background:
-        "radial-gradient(ellipse at 30% 40%,rgba(194,24,91,.2),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(201,147,42,.15),transparent 60%)",
+        "radial-gradient(ellipse at 30% 40%,rgba(194,24,91,.2),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(255,107,0,.15),transparent 60%)",
     },
     body: { padding: 14 },
     label: {
@@ -174,8 +174,8 @@ export default function VotePage() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      background: "rgba(201,147,42,.06)",
-      border: "1px solid rgba(201,147,42,.15)",
+      background: "rgba(255,107,0,.06)",
+      border: "1px solid rgba(255,107,0,.15)",
       borderRadius: 10,
       padding: "11px 14px",
       marginBottom: 14,
@@ -192,7 +192,7 @@ export default function VotePage() {
       fontWeight: 700,
       cursor: "pointer",
       fontFamily: "var(--font-body)",
-      boxShadow: "0 4px 24px rgba(201,147,42,.3)",
+      boxShadow: "0 4px 24px rgba(255,107,0,.3)",
     },
   };
 
@@ -284,7 +284,7 @@ export default function VotePage() {
                       fontSize: "0.85rem",
                       cursor: "pointer",
                       border: amount === preset ? "1px solid var(--gold)" : "1px solid var(--border)",
-                      background: amount === preset ? "rgba(201,147,42,.12)" : "transparent",
+                      background: amount === preset ? "rgba(255,107,0,.12)" : "transparent",
                       color: amount === preset ? "var(--gold-light)" : "var(--text-muted)",
                     }}
                   >
@@ -335,8 +335,8 @@ export default function VotePage() {
                     style={{
                       padding: "12px 10px",
                       borderRadius: 12,
-                      border: `1px solid ${provider === item.id ? "rgba(201,147,42,.5)" : "var(--border)"}`,
-                      background: provider === item.id ? "rgba(201,147,42,.08)" : "transparent",
+                      border: `1px solid ${provider === item.id ? "rgba(255,107,0,.5)" : "var(--border)"}`,
+                      background: provider === item.id ? "rgba(255,107,0,.08)" : "transparent",
                       cursor: "pointer",
                       textAlign: "center",
                     }}

@@ -7,7 +7,7 @@ export default function Footer() {
         position: "relative",
         zIndex: 20,
         marginTop: "auto",
-        borderTop: "1px solid rgba(201,147,42,.15)",
+        borderTop: "1px solid rgba(255,107,0,.16)",
         padding: "16px 16px 18px",
         display: "flex",
         flexDirection: "column",

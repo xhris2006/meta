@@ -32,7 +32,7 @@ export default function VotePage() {
               width: 34,
               height: 34,
               borderRadius: "50%",
-              border: "2px solid rgba(201,147,42,.2)",
+              border: "2px solid rgba(255,107,0,.2)",
               borderTopColor: "var(--gold)",
               margin: "0 auto",
               animation: "spin 1s linear infinite",

@@ -31,7 +31,7 @@ export default function CandidateCard({ candidate, index = 0 }: { candidate: Can
     avatar: {
       width:"100%",height:"100%",display:"flex",alignItems:"center",
       justifyContent:"center",fontSize:"5rem",opacity:.3,
-      background:"radial-gradient(ellipse at 50% 30%,rgba(201,147,42,.15),transparent)",
+      background:"radial-gradient(ellipse at 50% 30%,rgba(255,107,0,.15),transparent)",
     },
     typeBadge: {
       position:"absolute",top:12,left:12,zIndex:2,
@@ -63,7 +63,7 @@ export default function CandidateCard({ candidate, index = 0 }: { candidate: Can
     },
     btnProfile: {
       flex:1,padding:"9px 0",background:"transparent",
-      color:"var(--gold)",border:"1px solid rgba(201,147,42,.3)",borderRadius:12,
+      color:"var(--gold)",border:"1px solid rgba(255,107,0,.3)",borderRadius:12,
       fontSize:"0.8rem",cursor:"pointer",transition:"all .2s",fontFamily:"var(--font-body)",
       textAlign:"center" as const,textDecoration:"none",display:"block",
     },
@@ -73,7 +73,7 @@ export default function CandidateCard({ candidate, index = 0 }: { candidate: Can
 
   return (
     <div style={S.card}
-      onMouseEnter={e=>{ (e.currentTarget as HTMLDivElement).style.transform="translateY(-6px)";(e.currentTarget as HTMLDivElement).style.borderColor="rgba(201,147,42,.35)";(e.currentTarget as HTMLDivElement).style.boxShadow="0 20px 60px rgba(0,0,0,.4)"; }}
+      onMouseEnter={e=>{ (e.currentTarget as HTMLDivElement).style.transform="translateY(-6px)";(e.currentTarget as HTMLDivElement).style.borderColor="rgba(255,107,0,.35)";(e.currentTarget as HTMLDivElement).style.boxShadow="0 20px 60px rgba(0,0,0,.4)"; }}
       onMouseLeave={e=>{ (e.currentTarget as HTMLDivElement).style.transform="";(e.currentTarget as HTMLDivElement).style.borderColor="var(--border)";(e.currentTarget as HTMLDivElement).style.boxShadow=""; }}
     >
       <div style={S.photo}>
@@ -96,8 +96,8 @@ export default function CandidateCard({ candidate, index = 0 }: { candidate: Can
         <div style={S.city}>📍 {candidate.city}</div>
         <div style={S.actions}>
           <Link href={`/candidates/${candidate.id}`} style={S.btnProfile}
-            onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.background="rgba(201,147,42,.08)";(e.currentTarget as HTMLElement).style.borderColor="rgba(201,147,42,.5)"; }}
-            onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.background="transparent";(e.currentTarget as HTMLElement).style.borderColor="rgba(201,147,42,.3)"; }}
+            onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.background="rgba(255,107,0,.08)";(e.currentTarget as HTMLElement).style.borderColor="rgba(255,107,0,.5)"; }}
+            onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.background="transparent";(e.currentTarget as HTMLElement).style.borderColor="rgba(255,107,0,.3)"; }}
           >Profil</Link>
           <Link href={`/vote/${candidate.id}`} style={S.btnVote}
             onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.opacity=".85"; }}

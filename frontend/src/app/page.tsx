@@ -41,7 +41,7 @@ export default function HomePage() {
       letterSpacing: "0.2em",
       textTransform: "uppercase",
       color: "var(--gold)",
-      border: "1px solid rgba(201,147,42,.3)",
+      border: "1px solid rgba(255,107,0,.3)",
       padding: "5px 14px",
       borderRadius: 100,
       marginBottom: 18,
@@ -107,8 +107,8 @@ export default function HomePage() {
       width: 40,
       height: 40,
       borderRadius: 10,
-      background: "rgba(201,147,42,.08)",
-      border: "1px solid rgba(201,147,42,.15)",
+      background: "rgba(255,107,0,.08)",
+      border: "1px solid rgba(255,107,0,.15)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -123,7 +123,7 @@ export default function HomePage() {
   return (
     <div style={S.page}>
       <div style={S.orbs}>
-        <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle,rgba(201,147,42,.07),transparent)", top: -200, left: -200, filter: "blur(80px)" }} />
+        <div style={{ position: "absolute", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle,rgba(255,107,0,.07),transparent)", top: -200, left: -200, filter: "blur(80px)" }} />
         <div style={{ position: "absolute", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle,rgba(194,24,91,.06),transparent)", bottom: 0, right: -150, filter: "blur(80px)" }} />
       </div>
 
@@ -211,7 +211,7 @@ export default function HomePage() {
             href="/candidates"
             style={{
               padding: "10px 24px",
-              border: "1px solid rgba(201,147,42,.4)",
+              border: "1px solid rgba(255,107,0,.4)",
               color: "var(--gold)",
               borderRadius: 100,
               textDecoration: "none",
@@ -243,7 +243,7 @@ export default function HomePage() {
               key={index}
               style={{ ...S.howCard, animationDelay: `${index * 0.08}s` }}
               className="animate-fade-up"
-              onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "rgba(201,147,42,.3)")}
+              onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "rgba(255,107,0,.3)")}
               onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.borderColor = "var(--border)")}
             >
               <div style={S.howIcon}>{item.icon}</div>

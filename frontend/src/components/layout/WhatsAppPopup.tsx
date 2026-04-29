@@ -48,7 +48,7 @@ export default function WhatsAppPopup() {
           margin: "0 auto",
           zIndex: 161,
           background: "linear-gradient(180deg, rgba(20,7,11,.98), rgba(8,0,3,.98))",
-          border: "1px solid rgba(201,147,42,.18)",
+          border: "1px solid rgba(255,107,0,.18)",
           borderRadius: 24,
           padding: "22px 18px",
           boxShadow: "0 24px 60px rgba(0,0,0,.45)",
