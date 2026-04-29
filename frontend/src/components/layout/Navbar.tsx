@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useAuthStore } from "@/store/authStore";
 import { useRouter } from "next/navigation";
+import { useThemeContext } from "./ThemeProvider";
 
 const links = [
   ["Accueil", "/"],
@@ -15,8 +16,14 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { user, isAuthenticated, logout } = useAuthStore();
+  const { theme, toggleTheme } = useThemeContext();
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -55,6 +62,7 @@ export default function Navbar() {
           backdropFilter: "blur(18px)",
           borderBottom: "1px solid rgba(201,147,42,.16)",
         }}
+        className="dark:bg-opacity-88"
       >
         <Link
           href="/"
@@ -71,29 +79,54 @@ export default function Navbar() {
           Meta Miss & Master
         </Link>
 
-        <button
-          onClick={() => setOpen(true)}
-          aria-label="Ouvrir le menu"
-          style={{
-            minWidth: 88,
-            height: 38,
-            padding: "0 12px",
-            borderRadius: 12,
-            border: "1px solid rgba(201,147,42,.24)",
-            background: "rgba(201,147,42,.08)",
-            color: "var(--text)",
-            fontSize: "0.85rem",
-            fontWeight: 600,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            cursor: "pointer",
-          }}
-        >
-          <span style={{ fontSize: "0.88rem", lineHeight: 1, letterSpacing: "-0.12em" }}>|||</span>
-          <span>Menu</span>
-        </button>
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          {mounted && (
+            <button
+              onClick={toggleTheme}
+              aria-label={theme === "dark" ? "Activer le mode clair" : "Activer le mode sombre"}
+              title={theme === "dark" ? "Mode clair" : "Mode sombre"}
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: 12,
+                border: "1px solid rgba(201,147,42,.24)",
+                background: "rgba(201,147,42,.08)",
+                color: "var(--text)",
+                fontSize: "1rem",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                transition: "all 0.3s ease",
+              }}
+            >
+              {theme === "dark" ? "☀️" : "🌙"}
+            </button>
+          )}
+          <button
+            onClick={() => setOpen(true)}
+            aria-label="Ouvrir le menu"
+            style={{
+              minWidth: 88,
+              height: 38,
+              padding: "0 12px",
+              borderRadius: 12,
+              border: "1px solid rgba(201,147,42,.24)",
+              background: "rgba(201,147,42,.08)",
+              color: "var(--text)",
+              fontSize: "0.85rem",
+              fontWeight: 600,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ fontSize: "0.88rem", lineHeight: 1, letterSpacing: "-0.12em" }}>|||</span>
+            <span>Menu</span>
+          </button>
+        </div>
       </nav>
 
       {open && (
@@ -198,6 +231,66 @@ export default function Navbar() {
                   {label}
                 </Link>
               ))}
+            </div>
+
+            <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 8 }}>
+              <Link
+                href="/vote"
+                onClick={closeMenu}
+                style={{
+                  padding: "11px 12px",
+                  borderRadius: 12,
+                  textDecoration: "none",
+                  textAlign: "center",
+                  background: "linear-gradient(135deg,var(--gold),var(--gold-light))",
+                  color: "#08000A",
+                  fontWeight: 700,
+                  fontSize: "0.84rem",
+                }}
+              >
+                Voter maintenant
+              </Link>
+
+              {isAuthenticated && user?.role === "ADMIN" ? (
+                <>
+                  <Link
+                    href="/admin"
+                    onClick={closeMenu}
+                    style={{
+                      padding: "11px 12px",
+                      borderRadius: 12,
+                      textDecoration: "none",
+                      textAlign: "center",
+                      color: "var(--gold-light)",
+                      border: "1px solid rgba(201,147,42,.24)",
+                      fontSize: "0.84rem",
+                    }}
+                  >
+                    Administration
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    style={{
+                      padding: "11px 12px",
+                      borderRadius: 12,
+                      border: "1px solid rgba(239,83,80,.24)",
+                      background: "transparent",
+                      color: "#EF5350",
+                      cursor: "pointer",
+                      fontSize: "0.84rem",
+                    }}
+                  >
+                    Deconnexion
+                  </button>
+                </>
+              ) : null}
+            </div>
+          </aside>
+        </>
+      )}
+    </>
+  );
+}
             </div>
 
             <div style={{ marginTop: "auto", display: "flex", flexDirection: "column", gap: 8 }}>
